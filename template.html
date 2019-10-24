@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>뷰 템플릿 문법</title>
+    <!-- 도움되는 콘솔 경고를 포함한 개발 버전 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <!-- 보간법(Interpolation)
+    문자열 -->
+    <span>메시지: {{msg}}</span>
+    <span v-once>다시는 변경하지 않습니다: {{msg}}</span>
+
+    <!-- 원시 HTML
+    이중 중괄호(mustaches)는 HTML이 아닌 일반 텍스트로 데이터를 해석합니다.
+    신뢰할 수 있는 콘텐츠에서만 HTML 보간을 사용하고 사용자가 제공한 콘텐츠에서는 절대 사용하면 안됩니다. -->
+    <p>Using mustaches: {{rawHtml}}</p>
+    <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+
+    <!-- 속성 -->
+    <div v-bind:id='dynamicId'></div>
+    <button v-bind:disabled='isButtonDisabled'>Button</button>
+
+    {{ number + 1 }}
+
+    {{ ok ? 'YES' : 'NO' }}
+
+    {{ message.split('').reverse().join('') }}
+
+    <div v-bind:id="'list-' + id"></div>
+
+    
+    
+    <!-- 디렉티브 -v -->
+    <p v-if="seen">이제 나를 볼 수 있어요</p>
+
+    <!-- 전달인자 -->
+    <a v-bind:href="url"> ... </a>
+    <a v-on:click="doSomething"> ... </a>
+
+    <!-- 수식어 -->
+    <form v-on:submit.prevent="onSubmit"> ... </form>
+
+    <!-- 약어 -->
+    <a :href="url"> ... </a>
+    <a @click="doSomething"> ... </a>
+</body>
+</html>
